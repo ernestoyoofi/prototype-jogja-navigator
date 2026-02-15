@@ -4,7 +4,8 @@ import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import L from 'leaflet';
 import { Spot } from '../types';
 
-const RecenterMap = ({ coords }: { coords: [number, number] }) => {
+// Functional helper to handle map recentering
+const RecenterMap: React.FC<{ coords: [number, number] }> = ({ coords }) => {
   const map = useMap();
   useEffect(() => {
     if (coords) {
@@ -16,6 +17,8 @@ const RecenterMap = ({ coords }: { coords: [number, number] }) => {
 
 const InteractiveMap: React.FC<{ spots: Spot[] }> = ({ spots }) => {
   useEffect(() => {
+    // Standard Leaflet marker fix for React environments
+    // This resolves the missing marker icon issue in production
     const DefaultIcon = L.icon({
       iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
       shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
