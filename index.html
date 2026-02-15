@@ -8,29 +8,34 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
   <style>
     body {
       font-family: 'Plus Jakarta Sans', sans-serif;
       background-color: #ffffff;
       color: #1a1a1a;
+      overflow: hidden;
     }
     .custom-scrollbar::-webkit-scrollbar {
-      width: 5px;
+      width: 4px;
     }
     .custom-scrollbar::-webkit-scrollbar-track {
-      background: #f8fafc;
+      background: transparent;
     }
     .custom-scrollbar::-webkit-scrollbar-thumb {
-      background: #e2e8f0;
+      background: #e5e7eb;
       border-radius: 10px;
-    }
-    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-      background: #cbd5e1;
     }
     .leaflet-container {
       z-index: 1;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-chat {
+      animation: fadeIn 0.3s ease-out forwards;
     }
   </style>
 <script type="importmap">
@@ -43,12 +48,16 @@
     "lucide-react": "https://esm.sh/lucide-react@0.344.0",
     "@google/genai": "https://esm.sh/@google/genai@1.41.0",
     "leaflet": "https://esm.sh/leaflet@1.9.4",
-    "react-leaflet": "https://esm.sh/react-leaflet@4.2.1?external=react,react-dom"
+    "react-leaflet": "https://esm.sh/react-leaflet@4.2.1?external=react,react-dom",
+    "vite": "https://esm.sh/vite@^7.3.1",
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.4"
   }
 }
 </script>
 </head>
 <body>
   <div id="root"></div>
+  <!-- Vite entry point -->
+  <script type="module" src="/index.tsx"></script>
 </body>
 </html>
